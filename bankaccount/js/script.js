@@ -1,14 +1,18 @@
+// DOM HELMPER FUNCTION
 const $ = (id) => document.getElementById(id)
 
+// GLOBAL VARIABLES
 let ownerName
 let depositAmount
 let withdrawalAmount
 let account
 
+// FORMATTING HELPER FUNCTION
 function formatMoney(number) {
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
+// NAME BTN EVENT LISTENER
 $('name').addEventListener('click', () => {
     ownerName = prompt('Enter name of account holder.')
     // Load existing balance from localStorage or start a new account with 0 balance
@@ -21,7 +25,7 @@ $('name').addEventListener('click', () => {
     $('balance-title').innerHTML = `${ownerName}'s Current Balance:`
 })
 
-
+// DEPOSIT BTN EVENT LISTENER
 $('deposit').addEventListener('click', () => {
    depositAmount = parseFloat(prompt('Enter amount for deposit.'))
    // make a deposit to the account
@@ -32,6 +36,7 @@ $('deposit').addEventListener('click', () => {
    }
 })
 
+// WITHDRAW BTN EVENT LISTENER
 $('withdraw').addEventListener('click', () => {
     withdrawalAmount = parseFloat(prompt('Enter amount to be withdrawn.'))
     // make a withdrawal from the account
@@ -42,6 +47,7 @@ $('withdraw').addEventListener('click', () => {
     }
 })
 
+// BANK ACCOUNT CLOSURE FUNCTION
 function bankAccount(ownerName, initialBalance) {
     let balance = initialBalance
     let owner = ownerName
