@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M13 Assignment - The Bank Account Application</title>
+    <script src="js/script.js" defer></script>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            background-size: cover;
+            animation: colorChange 10s infinite;
+            font-family: Arial, sans-serif;
+        }
+
+        @keyframes colorChange {
+            0%   {background: rgb(255, 0, 0);}     /* Red */
+            20%  {background: rgb(0, 255, 0);}     /* Green */
+            40%  {background: rgb(0, 0, 255);}     /* Blue */
+            60%  {background: rgb(255, 255, 0);}   /* Yellow */
+            80%  {background: rgb(0, 255, 255);}   /* Cyan */
+            100% {background: rgb(255, 0, 255);}   /* Magenta */
+        }
+
+        #balance-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+            color: white;
+            font-size: 1.5em;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        #current-balance {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        #button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        button {
+            margin: 0 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div id="balance-container">
+        <p id="balance-title">Current Balance:</p>
+        <p id="current-balance">$0</p>
+    </div>
+    <div id="button-group">
+        <button id="name">Name</button>
+        <button id="deposit">Deposit</button>
+        <button id="withdraw">Withdraw</button>
+    </div>
+</body>
+</html>
