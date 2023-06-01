@@ -3,76 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M13 Assignment - The Bank Account Application</title>
+    <title>Elite Bank - Online Account Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script src="js/script.js" defer></script>
     <style>
-        body {
-            height: 100vh;
+        * {
+            box-sizing: border-box;
             margin: 0;
-            background-size: cover;
-            animation: colorChange 10s infinite;
-            font-family: Arial, sans-serif;
+            padding: 0;
         }
 
-        @keyframes colorChange {
-            0%   {background: rgb(255, 0, 0);}     /* Red */
-            20%  {background: rgb(0, 255, 0);}     /* Green */
-            40%  {background: rgb(0, 0, 255);}     /* Blue */
-            60%  {background: rgb(255, 255, 0);}   /* Yellow */
-            80%  {background: rgb(0, 255, 255);}   /* Cyan */
-            100% {background: rgb(255, 0, 255);}   /* Magenta */
+        body {
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(270deg, #8e2de2, #4a00e0);
+            background-size: 200% 200%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
         }
 
         #balance-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 10vh;
-            color: white;
+            margin-bottom: 20px;
+        }
+
+        #balance-container p {
             font-size: 1.5em;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px;
+            font-weight: 500;
         }
 
         #current-balance {
-            margin-left: 10px;
             font-weight: bold;
+            color: #4CAF50;  /* Green color for positive balance */
         }
 
         #button-group {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 80vh;
         }
 
         button {
-            margin: 0 20px;
-            padding: 10px 20px;
-            font-size: 1.2em;
+            padding: 15px 25px;
+            font-size: 1.1em;
             border: none;
             border-radius: 5px;
             color: white;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: #24ab79; /* Deep orange color */
             transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: #02a012; /* Slightly darker shade of deep orange on hover */
+        }
+
+        button i {
+            margin-right: 5px;
         }
     </style>
 </head>
 <body>
-    <div id="balance-container">
-        <p id="balance-title">Current Balance:</p>
-        <p id="current-balance">$0</p>
-    </div>
-    <div id="button-group">
-        <button id="name">Name</button>
-        <button id="deposit">Deposit</button>
-        <button id="withdrawal">Withdraw</button>
+    <div class="container">
+        <div id="balance-container">
+            <p id="balance-title">Current Balance:</p>
+            <p id="current-balance"><i class="fas fa-dollar-sign"></i>0</p>
+        </div>
+        <div id="button-group">
+            <button id="name"><i class="fas fa-user-edit"></i> Update Name</button>
+            <button id="deposit"><i class="fas fa-download"></i> Deposit</button>
+            <button id="withdrawal"><i class="fas fa-upload"></i> Withdraw</button>
+        </div>
     </div>
 </body>
 </html>
