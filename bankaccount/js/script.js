@@ -1,4 +1,4 @@
-// DOM HELMPER FUNCTION
+// DOM HELPER FUNCTION
 const $ = (id) => document.getElementById(id)
 
 // GLOBAL VARIABLES
