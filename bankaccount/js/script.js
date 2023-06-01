@@ -36,8 +36,8 @@ $('deposit').addEventListener('click', () => {
    }
 })
 
-// WITHDRAW BTN EVENT LISTENER
-$('withdraw').addEventListener('click', () => {
+// WITHDRAWAL BTN EVENT LISTENER
+$('withdrawal').addEventListener('click', () => {
     withdrawalAmount = parseFloat(prompt('Enter amount to be withdrawn.'))
     // make a withdrawal from the account
     if (account) {
