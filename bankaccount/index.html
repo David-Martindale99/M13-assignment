@@ -6,6 +6,7 @@
     <title>Elite Bank - Online Account Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script src="js/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>   
     <style>
         * {
             box-sizing: border-box;
@@ -25,6 +26,22 @@
             color: white;
             animation: gradient 15s ease infinite;
         }
+
+        @keyframes balanceScale {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+            }
+
+        .balance-animation {
+            animation: balanceScale 1s ease;
+            }
 
         @keyframes gradient {
             0% {
@@ -91,6 +108,16 @@
         button i {
             margin-right: 5px;
         }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
@@ -100,10 +127,11 @@
             <p id="current-balance"><i class="fas fa-dollar-sign"></i>0</p>
         </div>
         <div id="button-group">
-            <button id="name"><i class="fas fa-user-edit"></i> Update Name</button>
+            <button id="name"><i class="fas fa-user-edit"></i> Enter Account Name</button>
             <button id="deposit"><i class="fas fa-download"></i> Deposit</button>
             <button id="withdrawal"><i class="fas fa-upload"></i> Withdraw</button>
         </div>
     </div>
+    <canvas id="confetti-canvas"></canvas>
 </body>
 </html>
