@@ -89,10 +89,12 @@ $('deposit').addEventListener('click', function() {
 // WITHDRAWAL BTN EVENT LISTENER
 $("withdrawal").addEventListener("click", () => {
   withdrawalAmount = parseFloat(prompt("Enter amount to be withdrawn."))
-
+  console.log(withdrawalAmount)
   // STOPS LOCAL STRORAGE FROM BANKING 'isNAN', IN CASE OF CANCLED PROMPT
-  if (withdrawalAmount = isNaN) {
-    withdrawalAmount = 0
+  if (isNaN(withdrawalAmount)) {
+    console.log(`ERROR: ${withdrawalAmount} is an invalid entry`)
+    alert('ERROR: Invalid entry')
+    return
   }
   // make a withdrawal from the account
   if (account) {
