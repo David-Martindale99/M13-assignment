@@ -39,6 +39,27 @@
             }
             }
 
+        #logo-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        #logo {
+            font-size: 3em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+            100% { transform: translateX(-50%) translateY(0px); }
+        }
+
         .balance-animation {
             animation: balanceScale 1s ease;
             }
@@ -121,6 +142,9 @@
     </style>
 </head>
 <body>
+    <div id="logo-container">
+        <h1 id="logo">Elite Bank</h1>
+    </div>    
     <div class="container">
         <div id="balance-container">
             <p id="balance-title">Current Balance:</p>

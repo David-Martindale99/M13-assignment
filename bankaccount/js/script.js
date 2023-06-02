@@ -29,21 +29,21 @@ $("name").addEventListener("click", () => {
 $('deposit').addEventListener('click', function() {
     depositAmount = parseFloat(prompt('Enter amount for deposit.'))
 
+    // vaidates account and deposit ammount
     if (isNaN(depositAmount) || depositAmount <= 0) {
         alert('Invalid deposit amount')
         return
-    }
-
-    if (!account) {
+    } else if (!account) {
         alert('You must first set a name for the account holder.')
         return
+    } else {
+      account.deposit(depositAmount)
     }
 
-    account.deposit(depositAmount)
-
+    // confetti
     const confettiSettings = {
-        particleCount: 100,
-        spread: 70,
+        particleCount: 200,
+        spread: 140,
         colors: [
           "#FFD700",
           "#FFA500",
@@ -76,7 +76,7 @@ $('deposit').addEventListener('click', function() {
         confetti.reset()
       }, 2000) // 2000 milliseconds = 2 seconds
 
-     // Add animation class to balance element
+    // Add animation class to balance element
     $("current-balance").classList.add("balance-animation")
 
     setTimeout(function () {
@@ -104,6 +104,15 @@ $("withdrawal").addEventListener("click", () => {
   }, 1000) // 1000 milliseconds = 1 second
 })
 
+// VISIBILITY CHANGE EVENT LISTNER
+window.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    document.title = 'Elite Bank - Away'
+  } else {
+    document.title = 'Elite Bank - Account Dashboard'
+  }
+})
+
 // BANK ACCOUNT CLOSURE FUNCTION
 function bankAccount(ownerName, initialBalance) {
   let balance = initialBalance
@@ -120,7 +129,7 @@ function bankAccount(ownerName, initialBalance) {
         return
       }
       balance -= withdrawalAmount
-      updateBalanceDisplay(balance)
+      $("current-balance").innerHTML = `$${formatMoney(balance)}`
       // Store updated balance in localStorage
       localStorage.setItem(owner, balance)
     },
