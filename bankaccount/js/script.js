@@ -89,6 +89,11 @@ $('deposit').addEventListener('click', function() {
 // WITHDRAWAL BTN EVENT LISTENER
 $("withdrawal").addEventListener("click", () => {
   withdrawalAmount = parseFloat(prompt("Enter amount to be withdrawn."))
+
+  // STOPS LOCAL STRORAGE FROM BANKING 'isNAN', IN CASE OF CANCLED PROMPT
+  if (withdrawalAmount = isNaN) {
+    withdrawalAmount = 0
+  }
   // make a withdrawal from the account
   if (account) {
     account.withdrawal(withdrawalAmount)
@@ -121,28 +126,32 @@ function bankAccount(ownerName, initialBalance) {
   return {
     withdrawal: function (withdrawalAmount) {
       if (withdrawalAmount <= 0) {
+        alert('Withdrawal ammount must be greater than 0.')
         console.log("Withdrawal amount must be greater than 0")
         return
-      }
-      if (withdrawalAmount > balance) {
+      } else if (withdrawalAmount > balance) {
+        alert('Insufficient funds')
         console.log("Insufficient balance for withdrawal")
         return
+      } else {
+        balance -= withdrawalAmount
+        $("current-balance").innerHTML = `$${formatMoney(balance)}`
+        // Store updated balance in localStorage
+        localStorage.setItem(owner, balance)
       }
-      balance -= withdrawalAmount
-      $("current-balance").innerHTML = `$${formatMoney(balance)}`
-      // Store updated balance in localStorage
-      localStorage.setItem(owner, balance)
     },
 
     deposit: function (depositAmount) {
       if (depositAmount <= 0) {
+        alert("Deposit amount must be greater than 0")
         console.log("Deposit amount must be greater than 0")
         return
+      } else {
+        balance += depositAmount
+        updateBalanceDisplay(balance)
+        // Store updated balance in localStorage
+        localStorage.setItem(owner, balance)
       }
-      balance += depositAmount
-      updateBalanceDisplay(balance)
-      // Store updated balance in localStorage
-      localStorage.setItem(owner, balance)
     },
 
     getBalance: function () {
